@@ -1,6 +1,3 @@
-
-// JabonController.java (CORREGIDO)
-
 package com.example.demo2.controllers;
 
 import com.example.demo2.models.Jabon;
@@ -13,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/jabones") // ¡CORRECCIÓN CLAVE APLICADA! Ahora incluye /api
+@RequestMapping("/api/jabones")
 @CrossOrigin(origins = "https://garyfloo.github.io/")
 public class JabonController {
 
@@ -23,25 +20,25 @@ public class JabonController {
     @Autowired
     private TiendaRepository tiendaRepository;
 
-    // ✅ Obtener todos los jabones (GET /api/jabones)
+    // Obtener todos los jabones
     @GetMapping
     public List<Jabon> getAll() {
         return jabonService.getAll();
     }
 
-    // ✅ Obtener un jabón por ID (GET /api/jabones/{id})
+    // Obtener un jabón por ID
     @GetMapping("/{id}")
     public Jabon getById(@PathVariable Long id) {
         return jabonService.getById(id);
     }
 
-    // ✅ Crear jabón sin tienda asociada (POST /api/jabones)
+    // Crear jabón sin tienda
     @PostMapping
     public Jabon create(@RequestBody Jabon jabon) {
         return jabonService.create(jabon);
     }
 
-    // ✅ Crear jabón asociado a una tienda existente (POST /api/jabones/tienda/{tiendaId})
+    // Crear jabón asociado a tienda existente
     @PostMapping("/tienda/{tiendaId}")
     public Jabon createInTienda(@PathVariable Long tiendaId, @RequestBody Jabon jabon) {
         Tienda tienda = tiendaRepository.findById(tiendaId)
@@ -51,7 +48,7 @@ public class JabonController {
         return jabonService.create(jabon);
     }
 
-    // ✅ Obtener todos los jabones de una tienda específica (GET /api/jabones/tienda/{tiendaId})
+    // Obtener jabones por tienda
     @GetMapping("/tienda/{tiendaId}")
     public List<Jabon> getJabonesPorTienda(@PathVariable Long tiendaId) {
         Tienda tienda = tiendaRepository.findById(tiendaId)
@@ -59,15 +56,17 @@ public class JabonController {
         return tienda.getJabones();
     }
 
-    // ✅ Actualizar jabón (PUT /api/jabones/{id})
+    // Actualizar jabón
     @PutMapping("/{id}")
     public Jabon update(@PathVariable Long id, @RequestBody Jabon jabon) {
         return jabonService.update(id, jabon);
     }
 
-    // ✅ Eliminar jabón (DELETE /api/jabones/{id})
+    // Eliminar jabón
     @DeleteMapping("/{id}")
     public void delete(@PathVariable Long id) {
         jabonService.delete(id);
     }
 }
+
+
