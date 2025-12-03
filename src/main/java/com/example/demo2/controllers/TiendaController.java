@@ -9,7 +9,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/tiendas")
-@CrossOrigin(origins = "https://garyfloo.github.io/")
+@CrossOrigin(origins = "https://garyfloo.github.io//")
 public class TiendaController {
 
     @Autowired
@@ -39,6 +39,7 @@ public class TiendaController {
         tiendaService.delete(id);
     }
 }
+
 
 
 
