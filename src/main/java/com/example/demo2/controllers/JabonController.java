@@ -11,7 +11,12 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/jabones")
-@CrossOrigin(origins = "https://garyfloo.github.io//")
+@CrossOrigin(
+    // 1. CORRECCIÓN: URL de origen sin la doble barra (//)
+    origins = {"https://garyfloo.github.io"},
+    // 2. CORRECCIÓN: Especificar los métodos HTTP permitidos (incluyendo OPTIONS para CORS)
+    methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE, RequestMethod.OPTIONS}
+)
 public class JabonController {
 
     @Autowired
