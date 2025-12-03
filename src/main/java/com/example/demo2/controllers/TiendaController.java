@@ -9,7 +9,12 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/tiendas")
-@CrossOrigin(origins = "https://garyfloo.github.io//")
+@CrossOrigin(
+    // CORRECCIÓN 1: Origen corregido a la URL base del frontend en GitHub Pages
+    origins = {"https://garyfloo.github.io"},
+    // CORRECCIÓN 2: Especificar los métodos permitidos (incluyendo OPTIONS para preflight)
+    methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.DELETE, RequestMethod.OPTIONS}
+)
 public class TiendaController {
 
     @Autowired
@@ -39,6 +44,7 @@ public class TiendaController {
         tiendaService.delete(id);
     }
 }
+
 
 
 
