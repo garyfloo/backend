@@ -11,7 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/jabones")
-@CrossOrigin(origins = "https://garyfloo.github.io/")
+@CrossOrigin(origins = "https://garyfloo.github.io//")
 public class JabonController {
 
     @Autowired
@@ -68,6 +68,7 @@ public class JabonController {
         jabonService.delete(id);
     }
 }
+
 
 
 
